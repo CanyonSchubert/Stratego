@@ -1,7 +1,7 @@
 package edu.asu.stratego;
 
 import java.io.IOException;
-import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
@@ -16,9 +16,16 @@ import edu.asu.stratego.game.ServerGameManager;
 public class Server {
     public static void main(String[] args) throws IOException {
         
-        String hostAddress    = InetAddress.getLocalHost().getHostAddress();
+        String hostAddress    = null;
         ServerSocket listener = null;
         int sessionNumber     = 1;
+        
+        Socket socket = new Socket();								//Creates socket to connect to arbitrary website		
+        socket.connect(new InetSocketAddress("google.com", 80));	//Connects to website using wireless adapter ONLY
+        hostAddress = socket.getLocalAddress().toString();			//Gets ip address of wireless adapter
+        
+        socket.close();												//Closes socket
+        
         
         try {
             listener = new ServerSocket(4212);
