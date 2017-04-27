@@ -30,7 +30,7 @@ public class ClientStage extends Stage {
         
         setConnectionScene();
         this.setTitle("ASU Stratego");
-        this.setResizable(false);
+        this.setResizable(true);
         this.show();
     }
     
